@@ -1,0 +1,21 @@
+
+services:
+  filebrowser:
+    image: filebrowser/filebrowser
+    ports:
+      - 8080:80
+    user: "${UID}:${GID}" 
+    volumes:
+      - /home/riccardo/DataVol/:/srv
+      - /home/riccardo/services/filebrowser/database:/database
+      - /home/riccardo/services/filebrowser/config:/config
+          
+    networks:
+      - caddy
+    labels:
+      caddy: filebrowser.anselmo
+      caddy.reverse_proxy: "{{upstreams 8080}}"
+
+networks:
+  caddy:
+    external: true
