@@ -1,0 +1,16 @@
+services:
+  transmission:
+    image: lscr.io/linuxserver/transmission:latest
+    container_name: transmission
+    environment:
+      - PUID=${UID}
+      - PGID=${GID}
+      - TZ=Etc/UTC
+    volumes:
+      - ${HOME}/services/transmission/config:/config
+      - ${HOME}/DataVol/torrents:/data/torrents
+    ports:
+      - 9091:9091
+      - 51413:51413
+      - 51413:51413/udp
+    restart: unless-stopped
