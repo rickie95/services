@@ -1,0 +1,22 @@
+services:
+  jellyfin:
+    image: lscr.io/linuxserver/jellyfin:latest
+    container_name: jellyfin
+    environment:
+      - PUID=${UID}
+      - PGID=${GID}
+      - TZ=Etc/UTC
+      - JELLYFIN_PublishedServerUrl=http://anselmo:8096/
+    volumes:
+      - ${HOME}/services/jellyfin/library:/config
+      - ${HOME}/DataVol/media/tvshows:/data/tvshows
+      - ${HOME}/DataVol/media/movies:/data/movies
+    devices:
+      - /dev/dri/card0
+      - /dev/dri/renderD128:/dev/dri/renderD128
+    ports:
+      - 8096:8096
+      - 8920:8920
+      - 7359:7359/udp
+      - 1900:1900/udp
+      #restart: unless-stopped
