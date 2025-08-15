@@ -8,7 +8,7 @@ services:
       - TZ=Etc/UTC
     volumes:
       - ${HOME}/services/transmission/config:/config
-      - ${HOME}/DataVol/torrents:/data/torrents
+      - ${HOME}/DataVol/media:/data/media/
     ports:
       - 9091:9091
       - 51413:51413
