@@ -1,5 +1,4 @@
 # Services
-## What I'm running on my NAS
 
 
 ## Setup
